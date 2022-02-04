@@ -2,27 +2,31 @@ export class DetailedSyntaxError extends Error {
   line: number;
   column: number;
   token: string;
+  message: string;
 
   constructor(line: number, column: number, token: string) {
     super();
     this.line = line + 1;
     this.column = column;
     this.token = token;
+    this.message = this.toString();
   }
 
   toString(): string {
-    return `Unexpected token "${this.token}" in JSON at position line ${this.line}, column ${this.column}`;
+    return `Unexpected token "${this.token}" in JSON at line ${this.line}, column ${this.column}`;
   }
 }
 
 export class UnexpectedEndError extends Error {
   line: number;
   column: number;
+  message: string;
 
   constructor(line: number, column: number) {
     super();
     this.line = line + 1;
     this.column = column;
+    this.message = this.toString();
   }
 
   toString(): string {
@@ -32,10 +36,12 @@ export class UnexpectedEndError extends Error {
 
 export class UnexpectedTypeError extends Error {
   type: string;
+  message: string;
 
   constructor(data: any) {
     super();
     this.type = typeof data;
+    this.message = this.toString();
   }
 
   toString(): string {
