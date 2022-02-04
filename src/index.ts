@@ -70,7 +70,6 @@ export type Pointers = Record<string, Record<PointerProp, Location>>;
 
 export interface StringifyOptions {
   space?: string | number;
-  es6?: boolean;
 }
 
 export interface StringifyResult {
@@ -380,7 +379,7 @@ export function stringify(data: any, _?: any, options?: string | number | String
   let line = 0;
   let column = 0;
   let pos = 0;
-  let es6 = options && (options as StringifyOptions).es6 && typeof Map == "function";
+  let es6 = typeof Map == "function";
   _stringify(data, 0, "");
 
   return {

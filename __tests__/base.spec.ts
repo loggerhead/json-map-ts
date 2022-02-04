@@ -599,37 +599,37 @@ describe("stringify", () => {
   describe("option es6", () => {
     test("should strigify Maps", () => {
       let data = new Map();
-      testStringify(data, {}, false, { es6: true });
+      testStringify(data, {}, false);
 
       data.set("foo", 1);
       data.set("bar", 2);
-      testStringify(data, { foo: 1, bar: 2 }, false, { es6: true });
-      testStringify(data, { foo: 1, bar: 2 }, false, { es6: true, space: 2 });
+      testStringify(data, { foo: 1, bar: 2 }, false);
+      testStringify(data, { foo: 1, bar: 2 }, false, { space: 2 });
     });
 
     test("should strigify Sets", () => {
       let data = new Set();
-      testStringify(data, {}, false, { es6: true });
+      testStringify(data, {}, false);
 
       data.add("foo");
       data.add("bar");
-      testStringify(data, { foo: true, bar: true }, false, { es6: true });
-      testStringify(data, { foo: true, bar: true }, false, { es6: true, space: 2 });
+      testStringify(data, { foo: true, bar: true }, false);
+      testStringify(data, { foo: true, bar: true }, false, { space: 2 });
     });
 
     test("should strigify Typed arrays", () => {
       let data = new Int8Array(2);
-      testStringify(data, [0, 0], false, { es6: true });
+      testStringify(data, [0, 0], false);
 
       data[0] = 1;
       data[1] = 2;
-      testStringify(data, [1, 2], false, { es6: true });
-      testStringify(data, [1, 2], false, { es6: true, space: 2 });
+      testStringify(data, [1, 2], false);
+      testStringify(data, [1, 2], false, { space: 2 });
     });
 
     test("should still strigify Objects", () => {
-      testStringify({}, {}, false, { es6: true });
-      testStringify({ foo: 1, bar: 2 }, { foo: 1, bar: 2 }, false, { es6: true });
+      testStringify({}, {}, false);
+      testStringify({ foo: 1, bar: 2 }, { foo: 1, bar: 2 }, false);
     });
   });
 
