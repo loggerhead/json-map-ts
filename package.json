@@ -3,6 +3,11 @@
   "version": "0.0.1",
   "main": "lib/src/index.js",
   "typings": "lib/src/index.d.ts",
+  "description": "Parse/stringify JSON and provide source-map for JSON-pointers to all nodes",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loggerhead/json-map-ts.git"
+  },
   "scripts": {
     "build": "tsc",
     "test": "jest --env=node --colors --coverage test"
