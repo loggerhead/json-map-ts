@@ -1,8 +1,12 @@
 # json-map-ts
 
-A TypeScript port of [json-source-map](https://github.com/epoberezkin/json-source-map). Parse/stringify JSON and provide source-map for JSON-pointers to all nodes.
+A TypeScript port of [json-source-map](https://github.com/epoberezkin/json-source-map). Difference from the origin:
 
-NEW: supports BigInt, Maps, Sets and Typed arrays.
+- Support only ES6 or later.
+- Enable bigint by default.
+- Throw error with custom type.
+
+Parse/stringify JSON and provide source-map for JSON-pointers to all nodes (supports BigInt, Maps, Sets and Typed arrays).
 
 [![Build Status](https://travis-ci.org/epoberezkin/json-source-map.svg?branch=master)](https://travis-ci.org/epoberezkin/json-source-map)
 [![npm version](https://badge.fury.io/js/json-source-map.svg)](https://www.npmjs.com/package/json-source-map)
