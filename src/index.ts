@@ -379,7 +379,6 @@ export function stringify(data: any, _?: any, options?: string | number | String
   let line = 0;
   let column = 0;
   let pos = 0;
-  let es6 = typeof Map == "function";
   _stringify(data, 0, "");
 
   return {
@@ -405,13 +404,11 @@ export function stringify(data: any, _?: any, options?: string | number | String
           out(quoted(_data.toJSON()));
         } else if (Array.isArray(_data)) {
           stringifyArray();
-        } else if (es6) {
+        } else {
           if (_data.constructor.BYTES_PER_ELEMENT) stringifyArray();
           else if (_data instanceof Map) stringifyMapSet();
           else if (_data instanceof Set) stringifyMapSet(true);
           else stringifyObject();
-        } else {
-          stringifyObject();
         }
     }
     map(ptr, "valueEnd");
