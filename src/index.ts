@@ -49,10 +49,6 @@ export class UnexpectedTypeError extends Error {
   }
 }
 
-export interface ParseOptions {
-  bigint?: boolean;
-}
-
 export interface Location {
   line: number;
   column: number;
@@ -90,12 +86,12 @@ const escapedChars = new Map([
 
 const A_CODE = "a".charCodeAt(0);
 
-export function parse(source: string, _?: any, options?: ParseOptions): ParseResult {
+export function parse(source: string, _?: any): ParseResult {
   let pointers: Pointers = {};
   let line = 0;
   let column = 0;
   let pos = 0;
-  let bigint = options && options.bigint && typeof BigInt != "undefined";
+  let bigint = typeof BigInt != "undefined";
 
   return {
     data: _parse("", true),

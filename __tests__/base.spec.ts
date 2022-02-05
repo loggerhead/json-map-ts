@@ -193,21 +193,14 @@ describe("parse", () => {
     });
 
     describe('option "bigint"', () => {
-      test("should parse large integers as BigInt with option bigint: true", () => {
+      test("should parse large integers as BigInt", () => {
         testParseBigInt("" + (Number.MAX_SAFE_INTEGER + 1));
         testParseBigInt("" + (Number.MIN_SAFE_INTEGER - 1));
         testParseBigInt("10000000000000000");
         testParseBigInt("-10000000000000000");
       });
 
-      test("should parse large integers as Number without option bigint", () => {
-        testParseNumber("" + (Number.MAX_SAFE_INTEGER + 1), false);
-        testParseNumber("" + (Number.MIN_SAFE_INTEGER - 1), false);
-        testParseNumber("10000000000000000", false);
-        testParseNumber("-10000000000000000", false);
-      });
-
-      test("should parse small integers and non-integers as Number with option bigint: true", () => {
+      test("should parse small integers and non-integers as Number", () => {
         testParseNumber("" + Number.MAX_SAFE_INTEGER);
         testParseNumber("" + Number.MIN_SAFE_INTEGER);
         testParseNumber("1e16");
@@ -221,13 +214,13 @@ describe("parse", () => {
       });
 
       function testParseBigInt(str: string) {
-        const result = jsonMap.parse(str, null, { bigint: true });
+        const result = jsonMap.parse(str);
         expect(typeof result.data).toEqual("bigint");
         expect(result.data).toStrictEqual(BigInt(str));
       }
 
       function testParseNumber(str: string, opt = true) {
-        const result = jsonMap.parse(str, null, { bigint: opt });
+        const result = jsonMap.parse(str);
         expect(typeof result.data).toEqual("number");
         expect(result.data).toStrictEqual(+str);
       }
