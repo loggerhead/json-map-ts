@@ -1,4 +1,4 @@
-export class DetailedSyntaxError extends Error {
+export class DetailedSyntaxError extends SyntaxError {
   line: number;
   column: number;
   token: string;
@@ -17,7 +17,7 @@ export class DetailedSyntaxError extends Error {
   }
 }
 
-export class UnexpectedEndError extends Error {
+export class UnexpectedEndError extends SyntaxError {
   line: number;
   column: number;
   message: string;
