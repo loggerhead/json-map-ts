@@ -1,6 +1,5 @@
 jest-stare
-coverage
-lib
+/lib
 # Logs
 logs
 *.log
