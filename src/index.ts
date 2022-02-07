@@ -53,6 +53,8 @@ export interface Location {
   line: number;
   column: number;
   pos: number;
+  // position of current line start
+  linePos: number;
 }
 
 export interface ParseResult {
@@ -91,6 +93,7 @@ export function parse(source: string, _?: any): ParseResult {
   let line = 1;
   let column = 0;
   let pos = 0;
+  let linePos = 0;
   let bigint = typeof BigInt != "undefined";
 
   return {
@@ -151,6 +154,7 @@ export function parse(source: string, _?: any): ParseResult {
         case "\n":
           column = 0;
           line++;
+          linePos = pos + 1;
           break;
         default:
           break loop;
@@ -309,6 +313,7 @@ export function parse(source: string, _?: any): ParseResult {
       line: line,
       column: column,
       pos: pos,
+      linePos: linePos,
     };
   }
 
@@ -328,8 +333,11 @@ export function parse(source: string, _?: any): ParseResult {
 
 export function stringify(data: any, _?: any, options?: string | number | StringifyOptions): StringifyResult {
   if (!validType(data)) throw new UnexpectedTypeError(data);
+  // number of new lines in variable 'whitespace'
   let wsLine = 0;
+  // number of chars in variable 'whitespace'
   let wsPos = 0;
+  // column width of variable 'whitespace'
   let wsColumn = 0;
   let whitespace: string | number | undefined = typeof options == "object" ? options.space : options;
 
@@ -375,6 +383,8 @@ export function stringify(data: any, _?: any, options?: string | number | String
   let line = 1;
   let column = 0;
   let pos = 0;
+  let linePos = 0;
+
   _stringify(data, 0, "");
 
   return {
@@ -499,9 +509,14 @@ export function stringify(data: any, _?: any, options?: string | number | String
 
   function indent(lvl: number) {
     if (whitespace) {
-      json += "\n" + repeat(lvl, whitespace as string);
+      const indentStr = repeat(lvl, whitespace as string);
+
+      json += "\n" + indentStr;
+      // first new line
       line++;
+      linePos = pos + 1;
       column = 0;
+
       while (lvl--) {
         if (wsLine) {
           line += wsLine;
@@ -511,6 +526,13 @@ export function stringify(data: any, _?: any, options?: string | number | String
         }
         pos += wsPos;
       }
+
+      // plus length of last new line
+      const i = indentStr.lastIndexOf("\n");
+      if (i >= 0) {
+        linePos += i + 1;
+      }
+
       pos += 1; // \n character
     }
   }
@@ -521,6 +543,7 @@ export function stringify(data: any, _?: any, options?: string | number | String
       line: line,
       column: column,
       pos: pos,
+      linePos: linePos,
     };
   }
 

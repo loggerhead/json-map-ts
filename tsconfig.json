@@ -1,19 +1,19 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "module": "esnext",
     "outDir": "./lib",
     "declaration": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "useDefineForClassFields": true,
+    "module": "esnext",
     "moduleResolution": "node",
     "strict": true,
     "jsx": "preserve",
     "sourceMap": true,
     "resolveJsonModule": true,
-    "lib": ["esnext", "dom"]
+    "lib": ["esnext"]
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "exclude": ["__tests__"]

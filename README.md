@@ -1,10 +1,10 @@
 # json-map-ts
 
-A TypeScript port of [json-source-map](https://github.com/epoberezkin/json-source-map). Difference from the origin:
+A TypeScript port of [json-source-map](https://github.com/epoberezkin/json-source-map) used for [json4u.com](http://json4u.com). Difference from the origin:
 
 - Support only ES6 or later.
 - Enable bigint by default.
-- Line start from 1 instead of 0.
+- Line start from 1 instead of
 - Throw error with custom type.
 
 Parse/stringify JSON and provide source-map for JSON-pointers to all nodes (supports BigInt, Maps, Sets and Typed arrays).

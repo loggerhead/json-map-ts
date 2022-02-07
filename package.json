@@ -1,6 +1,6 @@
 {
   "name": "json-map-ts",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "files": ["lib/**/*"],
@@ -12,7 +12,8 @@
   "scripts": {
     "build": "tsc",
     "test": "jest --env=node --colors --coverage test",
-    "prepublish" : "npm run build"
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run test"
   },
   "license": "MIT",
   "devDependencies": {

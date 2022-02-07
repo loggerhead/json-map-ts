@@ -19,40 +19,40 @@ describe("parse", () => {
       const pointers = testParse(json, JSON.parse(json), null, 2);
       expect(pointers).toStrictEqual({
         "": {
-          value: { line: 0 + 1, column: 0, pos: 0 },
-          valueEnd: { line: 10 + 1, column: 1, pos: 101 },
+          value: { line: 1, column: 0, pos: 0, linePos: 0 },
+          valueEnd: { line: 11, column: 1, pos: 101, linePos: 100 },
         },
         "/foo": {
-          key: { line: 1 + 1, column: 2, pos: 4 },
-          keyEnd: { line: 1 + 1, column: 7, pos: 9 },
-          value: { line: 1 + 1, column: 9, pos: 11 },
-          valueEnd: { line: 9 + 1, column: 3, pos: 99 },
+          key: { line: 2, column: 2, pos: 4, linePos: 2 },
+          keyEnd: { line: 2, column: 7, pos: 9, linePos: 2 },
+          value: { line: 2, column: 9, pos: 11, linePos: 2 },
+          valueEnd: { line: 10, column: 3, pos: 99, linePos: 96 },
         },
         "/foo/0": {
-          value: { line: 2 + 1, column: 4, pos: 17 },
-          valueEnd: { line: 4 + 1, column: 5, pos: 42 },
+          value: { line: 3, column: 4, pos: 17, linePos: 13 },
+          valueEnd: { line: 5, column: 5, pos: 42, linePos: 37 },
         },
         "/foo/0/bar": {
-          key: { line: 3 + 1, column: 6, pos: 25 },
-          keyEnd: { line: 3 + 1, column: 11, pos: 30 },
-          value: { line: 3 + 1, column: 13, pos: 32 },
-          valueEnd: { line: 3 + 1, column: 17, pos: 36 },
+          key: { line: 4, column: 6, pos: 25, linePos: 19 },
+          keyEnd: { line: 4, column: 11, pos: 30, linePos: 19 },
+          value: { line: 4, column: 13, pos: 32, linePos: 19 },
+          valueEnd: { line: 4, column: 17, pos: 36, linePos: 19 },
         },
         "/foo/1": {
-          value: { line: 5 + 1, column: 4, pos: 48 },
-          valueEnd: { line: 8 + 1, column: 5, pos: 95 },
+          value: { line: 6, column: 4, pos: 48, linePos: 44 },
+          valueEnd: { line: 9, column: 5, pos: 95, linePos: 90 },
         },
         "/foo/1/baz": {
-          key: { line: 6 + 1, column: 6, pos: 56 },
-          keyEnd: { line: 6 + 1, column: 11, pos: 61 },
-          value: { line: 6 + 1, column: 13, pos: 63 },
-          valueEnd: { line: 6 + 1, column: 16, pos: 66 },
+          key: { line: 7, column: 6, pos: 56, linePos: 50 },
+          keyEnd: { line: 7, column: 11, pos: 61, linePos: 50 },
+          value: { line: 7, column: 13, pos: 63, linePos: 50 },
+          valueEnd: { line: 7, column: 16, pos: 66, linePos: 50 },
         },
         "/foo/1/quux": {
-          key: { line: 7 + 1, column: 6, pos: 74 },
-          keyEnd: { line: 7 + 1, column: 12, pos: 80 },
-          value: { line: 7 + 1, column: 14, pos: 82 },
-          valueEnd: { line: 7 + 1, column: 21, pos: 89 },
+          key: { line: 8, column: 6, pos: 74, linePos: 68 },
+          keyEnd: { line: 8, column: 12, pos: 80, linePos: 68 },
+          value: { line: 8, column: 14, pos: 82, linePos: 68 },
+          valueEnd: { line: 8, column: 21, pos: 89, linePos: 68 },
         },
       });
     });
@@ -69,24 +69,24 @@ describe("parse", () => {
       const pointers = testParse(json, JSON.parse(json), null, "\t");
       expect(pointers).toStrictEqual({
         "": {
-          value: { line: 0 + 1, column: 0, pos: 0 },
-          valueEnd: { line: 6 + 1, column: 1, pos: 39 },
+          value: { line: 1, column: 0, pos: 0, linePos: 0 },
+          valueEnd: { line: 7, column: 1, pos: 39, linePos: 38 },
         },
         "/foo": {
-          key: { line: 1 + 1, column: 4, pos: 3 },
-          keyEnd: { line: 1 + 1, column: 9, pos: 8 },
-          value: { line: 1 + 1, column: 11, pos: 10 },
-          valueEnd: { line: 5 + 1, column: 5, pos: 37 },
+          key: { line: 2, column: 4, pos: 3, linePos: 2 },
+          keyEnd: { line: 2, column: 9, pos: 8, linePos: 2 },
+          value: { line: 2, column: 11, pos: 10, linePos: 2 },
+          valueEnd: { line: 6, column: 5, pos: 37, linePos: 35 },
         },
         "/foo/0": {
-          value: { line: 2 + 1, column: 8, pos: 14 },
-          valueEnd: { line: 4 + 1, column: 9, pos: 34 },
+          value: { line: 3, column: 8, pos: 14, linePos: 12 },
+          valueEnd: { line: 5, column: 9, pos: 34, linePos: 31 },
         },
         "/foo/0/bar": {
-          key: { line: 3 + 1, column: 12, pos: 19 },
-          keyEnd: { line: 3 + 1, column: 17, pos: 24 },
-          value: { line: 3 + 1, column: 19, pos: 26 },
-          valueEnd: { line: 3 + 1, column: 23, pos: 30 },
+          key: { line: 4, column: 12, pos: 19, linePos: 16 },
+          keyEnd: { line: 4, column: 17, pos: 24, linePos: 16 },
+          value: { line: 4, column: 19, pos: 26, linePos: 16 },
+          valueEnd: { line: 4, column: 23, pos: 30, linePos: 16 },
         },
       });
     });
@@ -103,24 +103,24 @@ describe("parse", () => {
       const pointers = testParse(json, JSON.parse(json), true);
       expect(pointers).toStrictEqual({
         "": {
-          value: { line: 0 + 1, column: 0, pos: 0 },
-          valueEnd: { line: 6 + 1, column: 1, pos: 54 },
+          value: { line: 1, column: 0, pos: 0, linePos: 0 },
+          valueEnd: { line: 7, column: 1, pos: 54, linePos: 53 },
         },
         "/foo": {
-          key: { line: 1 + 1, column: 2, pos: 5 },
-          keyEnd: { line: 1 + 1, column: 7, pos: 10 },
-          value: { line: 1 + 1, column: 9, pos: 12 },
-          valueEnd: { line: 5 + 1, column: 3, pos: 51 },
+          key: { line: 2, column: 2, pos: 5, linePos: 3 },
+          keyEnd: { line: 2, column: 7, pos: 10, linePos: 3 },
+          value: { line: 2, column: 9, pos: 12, linePos: 3 },
+          valueEnd: { line: 6, column: 3, pos: 51, linePos: 48 },
         },
         "/foo/0": {
-          value: { line: 2 + 1, column: 4, pos: 19 },
-          valueEnd: { line: 4 + 1, column: 5, pos: 46 },
+          value: { line: 3, column: 4, pos: 19, linePos: 15 },
+          valueEnd: { line: 5, column: 5, pos: 46, linePos: 41 },
         },
         "/foo/0/bar": {
-          key: { line: 3 + 1, column: 6, pos: 28 },
-          keyEnd: { line: 3 + 1, column: 11, pos: 33 },
-          value: { line: 3 + 1, column: 13, pos: 35 },
-          valueEnd: { line: 3 + 1, column: 17, pos: 39 },
+          key: { line: 4, column: 6, pos: 28, linePos: 22 },
+          keyEnd: { line: 4, column: 11, pos: 33, linePos: 22 },
+          value: { line: 4, column: 13, pos: 35, linePos: 22 },
+          valueEnd: { line: 4, column: 17, pos: 39, linePos: 22 },
         },
       });
     });
@@ -290,6 +290,12 @@ describe("parse", () => {
       expect(json).toEqual(reverseResult.json);
       expect(pointers).toStrictEqual(reverseResult.pointers);
     }
+
+    Object.values(pointers).forEach((pointer) => {
+      Object.values(pointer).forEach((loc) => {
+        expect(loc.linePos).toBeLessThanOrEqual(loc.pos);
+      });
+    });
     return pointers;
   }
 
@@ -329,56 +335,40 @@ describe("stringify", () => {
     const pointers = testStringify(data, data, null, 2);
     expect(pointers).toStrictEqual({
       "": {
-        value: { line: 0 + 1, column: 0, pos: 0 },
-        valueEnd: { line: 10 + 1, column: 1, pos: 90 },
+        value: { line: 1, column: 0, pos: 0, linePos: 0 },
+        valueEnd: { line: 11, column: 1, pos: 90, linePos: 89 },
       },
       "/foo": {
-        key: { line: 1 + 1, column: 2, pos: 4 },
-        keyEnd: { line: 1 + 1, column: 7, pos: 9 },
-        value: { line: 1 + 1, column: 9, pos: 11 },
-        valueEnd: { line: 9 + 1, column: 3, pos: 88 },
+        key: { line: 2, column: 2, pos: 4, linePos: 2 },
+        keyEnd: { line: 2, column: 7, pos: 9, linePos: 2 },
+        value: { line: 2, column: 9, pos: 11, linePos: 2 },
+        valueEnd: { line: 10, column: 3, pos: 88, linePos: 85 },
       },
       "/foo/0": {
-        value: { line: 2 + 1, column: 4, pos: 17 },
-        valueEnd: { line: 4 + 1, column: 5, pos: 39 },
+        value: { line: 3, column: 4, pos: 17, linePos: 13 },
+        valueEnd: { line: 5, column: 5, pos: 39, linePos: 34 },
       },
       "/foo/0/bar": {
-        key: { line: 3 + 1, column: 6, pos: 25 },
-        keyEnd: { line: 3 + 1, column: 11, pos: 30 },
-        value: { line: 3 + 1, column: 13, pos: 32 },
-        valueEnd: { line: 3 + 1, column: 14, pos: 33 },
+        key: { line: 4, column: 6, pos: 25, linePos: 19 },
+        keyEnd: { line: 4, column: 11, pos: 30, linePos: 19 },
+        value: { line: 4, column: 13, pos: 32, linePos: 19 },
+        valueEnd: { line: 4, column: 14, pos: 33, linePos: 19 },
       },
       "/foo/1": {
-        value: { line: 5 + 1, column: 4, pos: 45 },
-        valueEnd: { line: 8 + 1, column: 5, pos: 84 },
+        value: { line: 6, column: 4, pos: 45, linePos: 41 },
+        valueEnd: { line: 9, column: 5, pos: 84, linePos: 79 },
       },
       "/foo/1/baz": {
-        key: { line: 6 + 1, column: 6, pos: 53 },
-        keyEnd: { line: 6 + 1, column: 11, pos: 58 },
-        value: { line: 6 + 1, column: 13, pos: 60 },
-        valueEnd: { line: 6 + 1, column: 14, pos: 61 },
+        key: { line: 7, column: 6, pos: 53, linePos: 47 },
+        keyEnd: { line: 7, column: 11, pos: 58, linePos: 47 },
+        value: { line: 7, column: 13, pos: 60, linePos: 47 },
+        valueEnd: { line: 7, column: 14, pos: 61, linePos: 47 },
       },
       "/foo/1/quux": {
-        key: {
-          column: 6,
-          line: 7 + 1,
-          pos: 69,
-        },
-        keyEnd: {
-          column: 12,
-          line: 7 + 1,
-          pos: 75,
-        },
-        value: {
-          column: 14,
-          line: 7 + 1,
-          pos: 77,
-        },
-        valueEnd: {
-          column: 15,
-          line: 7 + 1,
-          pos: 78,
-        },
+        key: { column: 6, line: 8, pos: 69, linePos: 63 },
+        keyEnd: { column: 12, line: 8, pos: 75, linePos: 63 },
+        value: { column: 14, line: 8, pos: 77, linePos: 63 },
+        valueEnd: { column: 15, line: 8, pos: 78, linePos: 63 },
       },
     });
   });
@@ -404,59 +394,58 @@ describe("stringify", () => {
     reverseData.custom = "custom";
 
     const pointers = testStringify(data, reverseData, null, "  ");
-
     expect(pointers).toStrictEqual({
       "": {
-        value: { line: 0 + 1, column: 0, pos: 0 },
-        valueEnd: { line: 9 + 1, column: 1, pos: 172 },
+        value: { line: 1, column: 0, pos: 0, linePos: 0 },
+        valueEnd: { line: 10, column: 1, pos: 172, linePos: 171 },
       },
       "/str": {
-        key: { line: 1 + 1, column: 2, pos: 4 },
-        keyEnd: { line: 1 + 1, column: 7, pos: 9 },
-        value: { line: 1 + 1, column: 9, pos: 11 },
-        valueEnd: { line: 1 + 1, column: 14, pos: 16 },
+        key: { line: 2, column: 2, pos: 4, linePos: 2 },
+        keyEnd: { line: 2, column: 7, pos: 9, linePos: 2 },
+        value: { line: 2, column: 9, pos: 11, linePos: 2 },
+        valueEnd: { line: 2, column: 14, pos: 16, linePos: 2 },
       },
       "/null": {
-        key: { line: 2 + 1, column: 2, pos: 20 },
-        keyEnd: { line: 2 + 1, column: 8, pos: 26 },
-        value: { line: 2 + 1, column: 10, pos: 28 },
-        valueEnd: { line: 2 + 1, column: 14, pos: 32 },
+        key: { line: 3, column: 2, pos: 20, linePos: 18 },
+        keyEnd: { line: 3, column: 8, pos: 26, linePos: 18 },
+        value: { line: 3, column: 10, pos: 28, linePos: 18 },
+        valueEnd: { line: 3, column: 14, pos: 32, linePos: 18 },
       },
       "/arr": {
-        key: { line: 3 + 1, column: 2, pos: 36 },
-        keyEnd: { line: 3 + 1, column: 7, pos: 41 },
-        value: { line: 3 + 1, column: 9, pos: 43 },
-        valueEnd: { line: 3 + 1, column: 11, pos: 45 },
+        key: { line: 4, column: 2, pos: 36, linePos: 34 },
+        keyEnd: { line: 4, column: 7, pos: 41, linePos: 34 },
+        value: { line: 4, column: 9, pos: 43, linePos: 34 },
+        valueEnd: { line: 4, column: 11, pos: 45, linePos: 34 },
       },
       "/obj": {
-        key: { line: 4 + 1, column: 2, pos: 49 },
-        keyEnd: { line: 4 + 1, column: 7, pos: 54 },
-        value: { line: 4 + 1, column: 9, pos: 56 },
-        valueEnd: { line: 4 + 1, column: 11, pos: 58 },
+        key: { line: 5, column: 2, pos: 49, linePos: 47 },
+        keyEnd: { line: 5, column: 7, pos: 54, linePos: 47 },
+        value: { line: 5, column: 9, pos: 56, linePos: 47 },
+        valueEnd: { line: 5, column: 11, pos: 58, linePos: 47 },
       },
       "/date": {
-        key: { line: 5 + 1, column: 2, pos: 62 },
-        keyEnd: { line: 5 + 1, column: 8, pos: 68 },
-        value: { line: 5 + 1, column: 10, pos: 70 },
-        valueEnd: { line: 5 + 1, column: 36, pos: 96 },
+        key: { line: 6, column: 2, pos: 62, linePos: 60 },
+        keyEnd: { line: 6, column: 8, pos: 68, linePos: 60 },
+        value: { line: 6, column: 10, pos: 70, linePos: 60 },
+        valueEnd: { line: 6, column: 36, pos: 96, linePos: 60 },
       },
       "/custom": {
-        key: { line: 6 + 1, column: 2, pos: 100 },
-        keyEnd: { line: 6 + 1, column: 10, pos: 108 },
-        value: { line: 6 + 1, column: 12, pos: 110 },
-        valueEnd: { line: 6 + 1, column: 20, pos: 118 },
+        key: { line: 7, column: 2, pos: 100, linePos: 98 },
+        keyEnd: { line: 7, column: 10, pos: 108, linePos: 98 },
+        value: { line: 7, column: 12, pos: 110, linePos: 98 },
+        valueEnd: { line: 7, column: 20, pos: 118, linePos: 98 },
       },
       "/control": {
-        key: { column: 2, line: 7 + 1, pos: 122 },
-        keyEnd: { column: 11, line: 7 + 1, pos: 131 },
-        value: { column: 13, line: 7 + 1, pos: 133 },
-        valueEnd: { column: 29, line: 7 + 1, pos: 149 },
+        key: { column: 2, line: 8, pos: 122, linePos: 120 },
+        keyEnd: { column: 11, line: 8, pos: 131, linePos: 120 },
+        value: { column: 13, line: 8, pos: 133, linePos: 120 },
+        valueEnd: { column: 29, line: 8, pos: 149, linePos: 120 },
       },
       "/esc~1aped~0": {
-        key: { line: 8 + 1, column: 2, pos: 153 },
-        keyEnd: { line: 8 + 1, column: 13, pos: 164 },
-        value: { line: 8 + 1, column: 15, pos: 166 },
-        valueEnd: { line: 8 + 1, column: 19, pos: 170 },
+        key: { line: 9, column: 2, pos: 153, linePos: 151 },
+        keyEnd: { line: 9, column: 13, pos: 164, linePos: 151 },
+        value: { line: 9, column: 15, pos: 166, linePos: 151 },
+        valueEnd: { line: 9, column: 19, pos: 170, linePos: 151 },
       },
     });
   });
@@ -481,27 +470,26 @@ describe("stringify", () => {
     };
 
     const pointers = testStringify(data);
-
     expect(pointers).toStrictEqual({
       "": {
-        value: { line: 0 + 1, column: 0, pos: 0 },
-        valueEnd: { line: 0 + 1, column: 19, pos: 19 },
+        value: { line: 1, column: 0, pos: 0, linePos: 0 },
+        valueEnd: { line: 1, column: 19, pos: 19, linePos: 0 },
       },
       "/foo": {
-        key: { line: 0 + 1, column: 1, pos: 1 },
-        keyEnd: { line: 0 + 1, column: 6, pos: 6 },
-        value: { line: 0 + 1, column: 7, pos: 7 },
-        valueEnd: { line: 0 + 1, column: 18, pos: 18 },
+        key: { line: 1, column: 1, pos: 1, linePos: 0 },
+        keyEnd: { line: 1, column: 6, pos: 6, linePos: 0 },
+        value: { line: 1, column: 7, pos: 7, linePos: 0 },
+        valueEnd: { line: 1, column: 18, pos: 18, linePos: 0 },
       },
       "/foo/0": {
-        value: { line: 0 + 1, column: 8, pos: 8 },
-        valueEnd: { line: 0 + 1, column: 17, pos: 17 },
+        value: { line: 1, column: 8, pos: 8, linePos: 0 },
+        valueEnd: { line: 1, column: 17, pos: 17, linePos: 0 },
       },
       "/foo/0/bar": {
-        key: { line: 0 + 1, column: 9, pos: 9 },
-        keyEnd: { line: 0 + 1, column: 14, pos: 14 },
-        value: { line: 0 + 1, column: 15, pos: 15 },
-        valueEnd: { line: 0 + 1, column: 16, pos: 16 },
+        key: { line: 1, column: 9, pos: 9, linePos: 0 },
+        keyEnd: { line: 1, column: 14, pos: 14, linePos: 0 },
+        value: { line: 1, column: 15, pos: 15, linePos: 0 },
+        valueEnd: { line: 1, column: 16, pos: 16, linePos: 0 },
       },
     });
   });
@@ -550,11 +538,11 @@ describe("stringify", () => {
     equal([
       jsonMap.stringify(data, null, 10),
       jsonMap.stringify(data, null, 20),
-      jsonMap.stringify(data, null, Array(10 + 1).join(" ")),
+      jsonMap.stringify(data, null, Array(11).join(" ")),
       jsonMap.stringify(data, null, Array(20).join(" ")),
     ]);
 
-    expect(jsonMap.stringify(data, null, 10)).not.toEqual(jsonMap.stringify(data, null, Array(9 + 1).join(" ")));
+    expect(jsonMap.stringify(data, null, 10)).not.toEqual(jsonMap.stringify(data, null, Array(10).join(" ")));
   });
 
   test("should stringify with CR/LF whitespace", () => {
@@ -649,6 +637,11 @@ describe("stringify", () => {
       expect(pointers).toStrictEqual(reverseResult.pointers);
     }
 
+    Object.values(pointers).forEach((pointer) => {
+      Object.values(pointer).forEach((loc) => {
+        expect(loc.linePos).toBeLessThanOrEqual(loc.pos);
+      });
+    });
     return pointers;
   }
 });
