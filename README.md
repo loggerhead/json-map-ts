@@ -4,6 +4,7 @@ A TypeScript port of [json-source-map](https://github.com/epoberezkin/json-sourc
 
 - Support only ES6 or later.
 - Enable bigint by default.
+- Line start from 1 instead of 0.
 - Throw error with custom type.
 
 Parse/stringify JSON and provide source-map for JSON-pointers to all nodes (supports BigInt, Maps, Sets and Typed arrays).

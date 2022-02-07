@@ -6,7 +6,7 @@ export class DetailedSyntaxError extends SyntaxError {
 
   constructor(line: number, column: number, token: string) {
     super();
-    this.line = line + 1;
+    this.line = line;
     this.column = column;
     this.token = token;
     this.message = this.toString();
@@ -24,7 +24,7 @@ export class UnexpectedEndError extends SyntaxError {
 
   constructor(line: number, column: number) {
     super();
-    this.line = line + 1;
+    this.line = line;
     this.column = column;
     this.message = this.toString();
   }
@@ -88,7 +88,7 @@ const A_CODE = "a".charCodeAt(0);
 
 export function parse(source: string, _?: any): ParseResult {
   let pointers: Pointers = {};
-  let line = 0;
+  let line = 1;
   let column = 0;
   let pos = 0;
   let bigint = typeof BigInt != "undefined";
@@ -372,7 +372,7 @@ export function stringify(data: any, _?: any, options?: string | number | String
 
   let json = "";
   let pointers: Pointers = {};
-  let line = 0;
+  let line = 1;
   let column = 0;
   let pos = 0;
   _stringify(data, 0, "");
