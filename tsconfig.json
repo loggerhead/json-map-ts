@@ -1,19 +1,24 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "es2020",
     "outDir": "./lib",
     "declaration": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "useDefineForClassFields": true,
-    "module": "esnext",
+    "module": "es2020",
     "moduleResolution": "node",
     "strict": true,
-    "jsx": "preserve",
     "sourceMap": true,
-    "resolveJsonModule": true,
-    "lib": ["esnext"]
+    "allowSyntheticDefaultImports": true,
+    "lib": ["es2020"],
+    "typeRoots": ["node_modules/@types/", "@types"]
+  },
+  "ts-node": {
+    "moduleTypes": {
+      "jest.config.ts": "cjs"
+    }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "exclude": ["__tests__"]
